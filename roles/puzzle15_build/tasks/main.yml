@@ -6,4 +6,4 @@
     name: abegorov/puzzle15-tomcat
     tag: latest
     push: true
-    source: local
+    source: build
