@@ -1,0 +1,20 @@
+# ansible-playbook -i inventories/production/hosts --check --diff
+# ansible-playbook -i inventories/production/hosts --diff
+---
+- name: Build puzzle15 application image
+  hosts: puzzle15_builder
+  become: true
+  gather_facts: no
+  roles:
+    - docker_install
+    - dockerhub_login
+    - puzzle15_build
+
+- name: Run puzzle15 application image
+  hosts: puzzle15_app
+  become: true
+  gather_facts: no
+  roles:
+    - docker_install
+    - dockerhub_login
+    - puzzle15

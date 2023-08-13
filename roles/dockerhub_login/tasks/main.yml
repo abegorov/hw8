@@ -1,0 +1,5 @@
+---
+- name: Log into Docker Hub
+  community.docker.docker_login:
+    username: "{{ lookup('ansible.builtin.env', 'DOCKERHUB_USER') }}"
+    password: "{{ lookup('ansible.builtin.env', 'DOCKERHUB_PASSWORD') }}"

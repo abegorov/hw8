@@ -1,0 +1,9 @@
+---
+- name: Build puzzle15-tomcat docker image and push it to Docker Hub
+  community.docker.docker_image:
+    build:
+      path: puzzle15-tomcat
+    name: abegorov/puzzle15-tomcat
+    tag: latest
+    push: true
+    source: local

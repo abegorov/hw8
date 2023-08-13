@@ -1,0 +1,17 @@
+---
+- name: Pull the puzzle15-tomcat docker image from Docker Hub
+  community.docker.docker_image:
+    name: abegorov/puzzle15-tomcat
+    tag: latest
+    source: pull
+    pull:
+      platform: amd64
+
+- name: Restart the puzzle15-tomcat container
+  community.docker.docker_container:
+    name: puzzle15-tomcat
+    image: abegorov/puzzle15-tomcat
+    state: started
+    restart: true
+    published_ports:
+     - "80:8080"
