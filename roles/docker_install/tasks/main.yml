@@ -25,6 +25,7 @@
     group: root
     mode: '0644'
     checksum: sha256:1500c1f56fa9e26b9b8f42452a553675796ade0807cdce11975eb98170b3a570
+  ignore_errors: "{{ ansible_check_mode }}"
 
 - name: Gather distribution_release facts
   ansible.builtin.setup:
