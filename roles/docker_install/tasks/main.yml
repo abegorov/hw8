@@ -48,6 +48,9 @@
       - containerd.io
       - docker-buildx-plugin
       - docker-compose-plugin
-      - python-docker
     update_cache: true
     state: present
+
+- name: Install docker python package
+  ansible.builtin.pip:
+    name: docker
