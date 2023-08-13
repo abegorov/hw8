@@ -51,6 +51,11 @@
     update_cache: true
     state: present
 
+- name: Install python-setuptools package
+  ansible.builtin.apt:
+    name: python-setuptools
+    state: present
+
 - name: Install docker python package
   ansible.builtin.pip:
     name: docker
