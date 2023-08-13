@@ -1,5 +1,5 @@
 [puzzle15_builder]
-10.129.0.28
+10.129.0.28 ansible_user=root
 
 [puzzle15_app]
-10.129.0.26
+10.129.0.26 ansible_user=root
