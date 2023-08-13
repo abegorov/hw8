@@ -1,5 +1,7 @@
-# ansible-playbook -i inventories/production/hosts --check --diff
-# ansible-playbook -i inventories/production/hosts --diff
+# export DOCKERHUB_USER=
+# export DOCKERHUB_PASSWORD=
+# ansible-playbook -i inventories/production/hosts puzzle15.yml --check --diff
+# ansible-playbook -i inventories/production/hosts puzzle15.yml --diff
 ---
 - name: Build puzzle15 application image
   hosts: puzzle15_builder
