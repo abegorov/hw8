@@ -1,5 +1,6 @@
+# HISTCONTROL=ignoreboth
 # export DOCKERHUB_USER=
-# export DOCKERHUB_PASSWORD=
+#  export DOCKERHUB_PASSWORD=
 # ansible-playbook -i inventories/production/hosts puzzle15.yml --check --diff
 # ansible-playbook -i inventories/production/hosts puzzle15.yml --diff
 ---
