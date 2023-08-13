@@ -1,7 +1,6 @@
 FROM alpine:3.18 AS builder
 WORKDIR /build
-RUN --mount=type=cache,target=/var/cache/apk,sharing=locked \
-    apk update && \
+RUN apk update && \
     apk add openjdk8 && \
     apk add maven && \
     apk add git && \
@@ -14,15 +13,16 @@ RUN --mount=type=cache,target=/var/cache/apk,sharing=locked \
     mvn package
 
 FROM alpine:3.18
-RUN --mount=type=cache,target=/var/cache/apk,sharing=locked \
-    --mount=type=tmpfs,target=/tmp \
-    apk update && \
+RUN apk update && \
     apk add openjdk8-jre-base && \
+    rm /var/cache/apk/* -rf && \
     wget -O /tmp/tomcat.tar.gz \
         https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.78/bin/apache-tomcat-9.0.78.tar.gz && \
     mkdir -p /opt/tomcat && \
     tar xf /tmp/tomcat.tar.gz --strip-components 1 --directory /opt/tomcat && \
+    rm /tmp/tomcat.tar.gz && \
     rm /opt/tomcat/webapps/* -rf
+
 COPY --from=builder --link /build/puzzle15/target/Puzzle15-1.0-SNAPSHOT.war /opt/tomcat/webapps/puzzle15.war
 EXPOSE 8080
 WORKDIR /opt/tomcat
